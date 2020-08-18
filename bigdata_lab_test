@@ -10,7 +10,7 @@ data from local /home/CDAC_ID/datasets/ to HDFS
 5. Create a file name called <PRN_number>.txt → store task wise code
 
 
-
+![task1](https://user-images.githubusercontent.com/31212980/90479028-af6a5680-e14b-11ea-9e42-35324b853d38.jpg)
 
 
 TASK 02
@@ -42,8 +42,9 @@ the /home/CDAC_ID/solutions directory on the local filesystem of the
 client machine.
 
 
+![task2](https://user-images.githubusercontent.com/31212980/90478985-9c578680-e14b-11ea-83ad-9547354da96b.jpg)
 
-
+![task2 1](https://user-images.githubusercontent.com/31212980/90478980-995c9600-e14b-11ea-8730-0d6205cdc42e.jpg)
 
 
 
@@ -70,7 +71,7 @@ named denver_late
 
 
 
-
+![task3](https://user-images.githubusercontent.com/31212980/90478987-9cf01d00-e14b-11ea-95c0-ab89c0d0fef2.jpg)
 
 
 TASK 04
@@ -87,7 +88,7 @@ ArrDelay, Origin and Dest
 o The UniqueCarrier, Origin and Dest columns are string types; the
 other columns are all integers
 
-
+![task3](https://user-images.githubusercontent.com/31212980/90478987-9cf01d00-e14b-11ea-95c0-ab89c0d0fef2.jpg)
 
 TASK 05
 Analyzing Data with Hive
@@ -115,6 +116,23 @@ column is a string named station_name, followed by integers for
 pg. 3
 the Year, Month, DayOfMonth, precipitation, temperature_max,
 and temperature_min
+
+
+
+
+
+
+
+![task5 1](https://user-images.githubusercontent.com/31212980/90478964-9497e200-e14b-11ea-8e01-53265ed94773.jpg)
+![task6 1](https://user-images.githubusercontent.com/31212980/90478967-95c90f00-e14b-11ea-8015-c439c31a41fc.jpg)
+![task6](https://user-images.githubusercontent.com/31212980/90478971-9792d280-e14b-11ea-8c6a-87907daaec28.jpg)
+
+
+![task5 2](https://user-images.githubusercontent.com/31212980/90479007-a7121b80-e14b-11ea-9efe-01b7d90b6a2e.jpg)
+![task5 3](https://user-images.githubusercontent.com/31212980/90479014-a9747580-e14b-11ea-8261-b8024a00b4d2.jpg)
+![task5 4](https://user-images.githubusercontent.com/31212980/90479017-aaa5a280-e14b-11ea-9ba9-020d9860e074.jpg)
+
+
 
 
 
