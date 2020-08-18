@@ -1,0 +1,136 @@
+Import a File into HDFS
+1. Create a new directory in HDFS named /user/CDAC_ID/flightdelays
+2. Create a local directory /home/CDAC_ID/datasets/
+3. Dataset download link :
+1. https://drive.google.com/file/d/1mCKUqzk-J-e9HJVVMbTWCanO3cQ
+OEBVC/view?usp=sharing
+4. Download files on the local machine /home/CDAC_ID/datasets/ and copy
+data from local /home/CDAC_ID/datasets/ to HDFS
+/user/CDAC_ID/flightdelays directory in HDFS
+5. Create a file name called <PRN_number>.txt → store task wise code
+
+
+
+
+
+TASK 02
+Cleanse Data using Pig
+Notice the comma-separated values of the flightdelays files in HDFS contain
+historical data for airline flight delays. The columns in the files match the
+following schema:
+1. Year, Month, DayofMonth, DayOfWeek, DepTime, CRSDepTime, ArrTime,
+CRSArrTime,
+2. UniqueCarrier, FlightNum, TailNum, ActualElapsedTime, CRSElapsedTime,
+AirTime,
+3. ArrDelay, DepDelay, Origin, Dest, Distance, TaxiIn, TaxiOut,
+Cancelled,
+4. CancellationCode, Diverted, CarrierDelay, WeatherDelay, NASDelay,
+SecurityDelay,
+5. LateAircraftDelay
+6. Write a Pig script that satisfies all of the following criteria:
+o Load all of the data in /user/CDAC_ID/flightdelays
+pg. 1
+o Remove all rows in the flightdelays data where the DepTime column
+equals the string "NA".
+o The output should only contain
+the Year, Month, DayofMonth, DepTime, UniqueCarrier, FlightNum, ArrDe
+lay, Origin and Dest
+o Store the result as comma-separated records in a new directory in
+HDFS named /user/CDAC_ID/flightdelays_clean
+o Save the script in a file named flightdelays_clean.pig and save it in
+the /home/CDAC_ID/solutions directory on the local filesystem of the
+client machine.
+
+
+
+
+
+
+
+
+
+TASK 03
+Analyze Data using Pig
+1. Write a Pig script saved on the client machine as /home/CDAC_ID
+/solutions/cleaned_total.pig that calculates the number of rows in
+the /user/CDAC_ID/flightdelays_clean files in HDFS. Store the output of
+your script in a new directory in HDFS named cleaned_total
+2. The Dest column is the destination airport code where the flight ends. Write a
+Pig script saved on the client machine
+as /home/CDAC_ID/solutions/denver_total.pig that calculates the number
+of rows in the /user/CDAC_ID/flightdelays_clean data where the Dest field
+equals the Denver airport code "DEN". Store the output of your script in a
+new directory in HDFS named denver_total.
+3. The ArrDelay column is the number of minutes that a flight arrived late. Write
+a Pig script saved on the client machine
+as /home/CDAC_ID/solutions/denver_late.pig that counts the number of
+flights whose Dest is the "DEN" airport that arrived 60 or more mintues late.
+Store the output of your script in a new directory in HDFS
+named denver_late
+
+
+
+
+
+
+TASK 04
+Define a Hive Table
+1. Define a Hive table named flightdelays that matches the data stored in
+your /user/CDAC_ID/flightdelays_clean directory in HDFS. The Hive table
+should satisfy all of the following criteria:
+pg. 2
+o An external table with the location set
+to /user/CDAC_ID/flightdelays_clean
+o The schema matches the
+columns Year, Month, DayOfMonth, DepTime, UniqueCarrier, FlightNum, 
+ArrDelay, Origin and Dest
+o The UniqueCarrier, Origin and Dest columns are string types; the
+other columns are all integers
+
+
+
+TASK 05
+Analyzing Data with Hive
+1. Write a Hive query for each of the tasks below. Save the queries in a single
+text file named /home/CDAC_ID/solutions/flightdelays.hive:
+o Compute the average arrdelay of flights landing in Denver
+(dest equals "DEN")
+o Compute the average arrdelay of flights where the origin is LAX and
+the dest is SFO
+o Determine which dest airport had the highest average arrdelay
+
+
+
+TASK 06
+Define and Populate an ORCFile Table
+1. Define a Hive table named sfo_weather that satisfies all of the following
+criteria:
+o A Hive-managed table
+o The data is stored in the ORCFile format
+o The table is populated with the records in
+the /home/CDAC_ID/datasets/flightdelays/sfo_weather.csv file on
+the client machine
+o The schema matches the columns in sfo_weather.csv - the first
+column is a string named station_name, followed by integers for
+pg. 3
+the Year, Month, DayOfMonth, precipitation, temperature_max,
+and temperature_min
+
+
+
+
+TASK 07
+Hive Join
+1. Write a Hive query in a file
+named /home/CDAC_ID/solutions/flights_weather.hive that satisfies the
+following criteria:
+o Use Tez as the execution engine
+o The result of the query is in a new Hive-managed table
+named flights_weather stored as a textfile
+o Join the flightdelays table with the sfo_weather table
+where dest or origin equals "SFO" in flightdelays, and
+the year, month and dayofmonth are equal in the two tables
+o Select all columns from the flightdelays table, and
+the temperature_max and temperature_mincolumns from sfo_weather
+
+
